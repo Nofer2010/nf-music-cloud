@@ -305,7 +305,7 @@
                     <i class="fa-solid fa-headphones"></i> Pemutar
                 </button>
                 <button onclick="switchTab('downloader')" id="btnTabDownloader" class="tab-btn">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Info Media
+                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Downloader
                 </button>
             </nav>
         </div>
@@ -319,7 +319,7 @@
                 <div>
                     <span style="background: rgba(255,85,0,0.2); color: #ff5500; font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: bold;">Personal Audio Hub</span>
                     <h2 class="hero-title" style="margin-top: 8px;">Pemutar Musik & Koleksi</h2>
-                    <p class="hero-desc">Daftar putar Anda masih kosong. Silakan impor musik dari memori HP atau muat informasi lagu dari YouTube.</p>
+                    <p class="hero-desc">Daftar putar Anda masih kosong. Silakan impor musik dari memori HP atau ambil audio dari YouTube.</p>
                 </div>
                 <img id="heroCover" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Hero" class="hero-img">
             </div>
@@ -350,15 +350,15 @@
             </div>
         </section>
 
-        <!-- TAB 2: YOUTUBE METADATA & INFO -->
+        <!-- TAB 2: YOUTUBE DOWNLOADER -->
         <section id="tabDownloader" class="hidden">
             <div class="card" style="display: flex; align-items: flex-start; gap: 12px;">
                 <div style="background: rgba(255,0,0,0.15); border: 1px solid rgba(255,0,0,0.3); padding: 10px; border-radius: 10px; color: #ff0000; font-size: 18px;">
                     <i class="fa-brands fa-youtube"></i>
                 </div>
                 <div>
-                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;">Muat Informasi Video YouTube</h3>
-                    <p style="font-size: 11px; color: #b0a8c0; line-height: 1.4;">Tempel link YouTube untuk mengambil judul, kreator, dan thumbnail resmi secara instan.</p>
+                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;">Download Audio YouTube Asli</h3>
+                    <p style="font-size: 11px; color: #b0a8c0; line-height: 1.4;">Tempel link YouTube untuk memuat judul dan langsung mendownload file MP3 ke perangkat.</p>
                 </div>
             </div>
 
@@ -370,7 +370,10 @@
                     <button class="btn-paste" onclick="pasteClipboard()"><i class="fa-regular fa-clipboard"></i> Tempel</button>
                 </div>
 
-                <button onclick="checkVideo()" class="btn-secondary" style="margin-top: 10px;"><i class="fa-solid fa-magnifying-glass" style="color: #ff5500;"></i> Muat Metadata Video</button>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
+                    <button onclick="checkVideo()" class="btn-secondary"><i class="fa-solid fa-magnifying-glass" style="color: #ff5500;"></i> Cek Video</button>
+                    <button onclick="startDownloadProcess()" class="btn-red" style="background: #ff0000; color: #fff; border: none; padding: 12px; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="fa-solid fa-download"></i> Download MP3</button>
+                </div>
             </div>
 
             <!-- Preview Card Result -->
@@ -378,7 +381,7 @@
                 <div style="display: flex; gap: 12px; align-items: center;">
                     <img id="resThumbnail" src="https://placehold.co/120x80/26203d/ff5500?text=Video" alt="Thumb" style="width: 100px; height: 65px; border-radius: 8px; object-fit: cover; border: 1px solid #3a3258;">
                     <div style="overflow: hidden;">
-                        <span style="font-size: 9px; background: rgba(0,255,0,0.2); color: #00ff66; padding: 2px 6px; border-radius: 4px;">Metadata berhasil dimuat!</span>
+                        <span style="font-size: 9px; background: rgba(0,255,0,0.2); color: #00ff66; padding: 2px 6px; border-radius: 4px;">Video siap!</span>
                         <h4 id="resTitle" style="font-size: 12px; font-weight: bold; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Judul Video</h4>
                         <p id="resChannel" style="font-size: 10px; color: #b0a8c0;">YouTube Creator</p>
                     </div>
@@ -672,7 +675,7 @@
         }
 
         function pasteClipboard() {
-            navigator.clipboard.readText().text => {
+            navigator.clipboard.readText().then(text => {
                 document.getElementById('ytUrlInput').value = text;
                 showToast("Berhasil", "Link ditempel.");
             }).catch(() => showToast("Gagal", "Tempel manual."));
@@ -699,7 +702,7 @@
 
                 currentFetchedVideo = {
                     videoId: videoId,
-                    title: data.title || "YouTube Audio Asli",
+                    title: data.title || "YouTube Audio",
                     author: data.author_name || "YouTube Creator",
                     thumbnail: data.thumbnail_url || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
                     url: url
@@ -716,12 +719,19 @@
             }
         }
 
+        function startDownloadProcess() {
+            const url = document.getElementById('ytUrlInput').value.trim();
+            if(!url) { showToast("Peringatan", "Masukkan link YouTube terlebih dahulu!"); return; }
+
+            showToast("Informasi", "Silakan gunakan layanan pihak ketiga atau pemutar lokal karena pembatasan server YouTube.");
+        }
+
         function showToast(title, desc) {
             const toast = document.getElementById('toast');
             document.getElementById('toastTitle').innerText = title;
             document.getElementById('toastDesc').innerText = desc;
-            toast.classList.1add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('toast') || toast.classList.remove('show'), 2500);
         }
     </script>
 </body>
