@@ -51,17 +51,6 @@
             align-items: center;
             gap: 12px;
         }
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #ff5500, #ff0000);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            box-shadow: 0 4px 12px rgba(255, 85, 0, 0.3);
-        }
         .nav-tabs {
             display: flex;
             background: #1c172d;
@@ -207,21 +196,6 @@
             font-size: 11px;
             cursor: pointer;
         }
-        .btn-red {
-            background: #ff0000;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
-        }
         .btn-secondary {
             background: #26203d;
             color: #fff;
@@ -235,29 +209,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-        }
-
-        /* Progress Bar Download Animasi */
-        .download-progress-box {
-            background: #120f1d;
-            border: 1px solid #3a3258;
-            border-radius: 12px;
-            padding: 12px;
-            margin-top: 12px;
-        }
-        .progress-track {
-            width: 100%;
-            height: 6px;
-            background: #26203d;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-        .progress-fill {
-            height: 100%;
-            background: #ff0000;
-            width: 0%;
-            transition: width 0.2s ease;
         }
 
         /* Footer Player Bar */
@@ -338,28 +289,23 @@
 </head>
 <body>
 
-    <!-- Hidden YouTube Player Container agar Musik Asli Keluar -->
-    <div id="youtubePlayerContainer" style="display:none;"></div>
-
-        <!-- Top Navigation Bar -->
+    <!-- Top Navigation Bar -->
     <header>
         <div class="header-container">
-            <!-- Menampilkan logo.png di pojok kiri atas -->
             <div class="logo-box">
                 <img src="logo.png" alt="NF Music Logo" style="width: 40px; height: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(255, 85, 0, 0.3); object-fit: cover;">
                 <div>
                     <h1 style="font-size: 15px; font-weight: bold;">NF Music®</h1>
-                    <span style="font-size: 10px; color: #b0a8c0;">Audio Stream & Downloader</span>
+                    <span style="font-size: 10px; color: #b0a8c0;">Audio Stream & Hub</span>
                 </div>
             </div>
 
-            <!-- Tabs Switcher -->
             <nav class="nav-tabs">
                 <button onclick="switchTab('player')" id="btnTabPlayer" class="tab-btn active-player">
                     <i class="fa-solid fa-headphones"></i> Pemutar
                 </button>
                 <button onclick="switchTab('downloader')" id="btnTabDownloader" class="tab-btn">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Downloader
+                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Info Media
                 </button>
             </nav>
         </div>
@@ -372,8 +318,8 @@
             <div class="hero-banner">
                 <div>
                     <span style="background: rgba(255,85,0,0.2); color: #ff5500; font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: bold;">Personal Audio Hub</span>
-                    <h2 class="hero-title" style="margin-top: 8px;">Pemutar Musik & Unduhan</h2>
-                    <p class="hero-desc">Daftar putar Anda masih kosong. Silakan impor musik dari memori HP atau download audio asli dari YouTube.</p>
+                    <h2 class="hero-title" style="margin-top: 8px;">Pemutar Musik & Koleksi</h2>
+                    <p class="hero-desc">Daftar putar Anda masih kosong. Silakan impor musik dari memori HP atau muat informasi lagu dari YouTube.</p>
                 </div>
                 <img id="heroCover" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Hero" class="hero-img">
             </div>
@@ -398,21 +344,21 @@
                 </div>
                 <div id="playlistContainer" class="playlist-grid">
                     <div id="emptyPlaylistMsg" style="grid-column: span 2; text-align: center; padding: 30px; color: #b0a8c0; font-size: 12px; background: #1c172d; border: 1px dashed #3a3258; border-radius: 12px;">
-                        Belum ada lagu. Tambahkan musik lokal atau download dari YouTube!
+                        Belum ada lagu. Tambahkan musik lokal dari perangkat Anda!
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 2: YOUTUBE DOWNLOADER -->
+        <!-- TAB 2: YOUTUBE METADATA & INFO -->
         <section id="tabDownloader" class="hidden">
             <div class="card" style="display: flex; align-items: flex-start; gap: 12px;">
                 <div style="background: rgba(255,0,0,0.15); border: 1px solid rgba(255,0,0,0.3); padding: 10px; border-radius: 10px; color: #ff0000; font-size: 18px;">
                     <i class="fa-brands fa-youtube"></i>
                 </div>
                 <div>
-                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;">Download Audio YouTube Asli</h3>
-                    <p style="font-size: 11px; color: #b0a8c0; line-height: 1.4;">Tempel link YouTube untuk memuat judul, thumbnail, dan memutar suara aslinya langsung di pemutar.</p>
+                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 4px;">Muat Informasi Video YouTube</h3>
+                    <p style="font-size: 11px; color: #b0a8c0; line-height: 1.4;">Tempel link YouTube untuk mengambil judul, kreator, dan thumbnail resmi secara instan.</p>
                 </div>
             </div>
 
@@ -424,21 +370,7 @@
                     <button class="btn-paste" onclick="pasteClipboard()"><i class="fa-regular fa-clipboard"></i> Tempel</button>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;">
-                    <button onclick="checkVideo()" class="btn-secondary"><i class="fa-solid fa-magnifying-glass" style="color: #ff5500;"></i> Cek Video</button>
-                    <button onclick="startDownloadProcess()" class="btn-red"><i class="fa-solid fa-download"></i> Download Audio</button>
-                </div>
-
-                <!-- Box Progress Download Animasi -->
-                <div id="progressBox" class="download-progress-box hidden">
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #b0a8c0;">
-                        <span id="progressStatusText">Menghubungkan ke server YouTube (1/3)...</span>
-                        <span id="progressPercentText">0%</span>
-                    </div>
-                    <div class="progress-track">
-                        <div id="progressFill" class="progress-fill"></div>
-                    </div>
-                </div>
+                <button onclick="checkVideo()" class="btn-secondary" style="margin-top: 10px;"><i class="fa-solid fa-magnifying-glass" style="color: #ff5500;"></i> Muat Metadata Video</button>
             </div>
 
             <!-- Preview Card Result -->
@@ -446,18 +378,18 @@
                 <div style="display: flex; gap: 12px; align-items: center;">
                     <img id="resThumbnail" src="https://placehold.co/120x80/26203d/ff5500?text=Video" alt="Thumb" style="width: 100px; height: 65px; border-radius: 8px; object-fit: cover; border: 1px solid #3a3258;">
                     <div style="overflow: hidden;">
-                        <span style="font-size: 9px; background: rgba(0,255,0,0.2); color: #00ff66; padding: 2px 6px; border-radius: 4px;">Audio asli berhasil dimuat!</span>
+                        <span style="font-size: 9px; background: rgba(0,255,0,0.2); color: #00ff66; padding: 2px 6px; border-radius: 4px;">Metadata berhasil dimuat!</span>
                         <h4 id="resTitle" style="font-size: 12px; font-weight: bold; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Judul Video</h4>
-                        <p id="resChannel" style="font-size: 10px; color: #b0a8c0;">YouTube Audio Asli • HQ</p>
+                        <p id="resChannel" style="font-size: 10px; color: #b0a8c0;">YouTube Creator</p>
                     </div>
                 </div>
             </div>
         </section>
-          <!-- Copyright Text -->
-    <div style="text-align: center; margin-top: 40px; padding-bottom: 20px; font-size: 11px; color: #b0a8c0; font-weight: 500;">
-        © Copyright FER Tech Audio 2026
-    </div>
 
+        <!-- Copyright Text -->
+        <div style="text-align: center; margin-top: 40px; padding-bottom: 20px; font-size: 11px; color: #b0a8c0; font-weight: 500;">
+            © Copyright FER Tech Audio 2026
+        </div>
     </main>
 
     <!-- Floating Bottom Player Bar -->
@@ -502,9 +434,6 @@
         </div>
     </div>
 
-    <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
     <!-- JavaScript Logic -->
     <script>
         let playlist = [];
@@ -514,26 +443,8 @@
         let isLoop = false;
         let isLiked = false;
         
-        let ytPlayer = null;
-        let activePlayerType = 'local'; // 'local' atau 'youtube'
         const audioElement = new Audio();
         let currentFetchedVideo = null;
-
-        function onYouTubeIframeAPIReady() {
-            ytPlayer = new YT.Player('youtubePlayerContainer', {
-                height: '0',
-                width: '0',
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-                handleSongEnd();
-            }
-        }
 
         window.onload = function() {
             renderPlaylist();
@@ -568,7 +479,7 @@
             if (playlist.length === 0) {
                 container.innerHTML = `
                     <div style="grid-column: span 2; text-align: center; padding: 30px; color: #b0a8c0; font-size: 12px; background: #1c172d; border: 1px dashed #3a3258; border-radius: 12px;">
-                        Belum ada lagu. Tambahkan musik lokal atau download dari YouTube!
+                        Belum ada lagu. Tambahkan musik lokal dari perangkat Anda!
                     </div>`;
                 return;
             }
@@ -602,7 +513,6 @@
             for(let i = 0; i < files.length; i++) {
                 const file = files[i];
                 playlist.push({
-                    type: 'local',
                     title: file.name.replace(/\.[^/.]+$/, ""),
                     artist: "Lokal Perangkat",
                     cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80",
@@ -613,7 +523,7 @@
             }
 
             renderPlaylist();
-            if(playlist.length === added) {
+            if(playlist.length === added && !audioElement.src) {
                 loadTrack(0);
             }
             showToast("Berhasil", `${added} lagu lokal ditambahkan!`);
@@ -624,21 +534,8 @@
             currentIndex = index;
             const song = playlist[currentIndex];
 
-            // Hentikan pemutar sebelumnya
             audioElement.pause();
-            if (ytPlayer && typeof ytPlayer.stopVideo === 'function') {
-                ytPlayer.stopVideo();
-            }
-
-            activePlayerType = song.type;
-
-            if (song.type === 'local') {
-                audioElement.src = song.src;
-            } else if (song.type === 'youtube') {
-                if (ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
-                    ytPlayer.loadVideoById(song.videoId);
-                }
-            }
+            audioElement.src = song.src;
 
             document.getElementById('currentTitle').innerText = song.title;
             document.getElementById('currentArtist').innerText = song.artist;
@@ -651,38 +548,22 @@
 
         function togglePlay() {
             if(playlist.length === 0) {
-                showToast("Peringatan", "Daftar putar masih kosong!");
+                showToast("Peringatan", "Daftar putar masih kosong! Silakan pilih file musik.");
                 return;
             }
-            if(!audioElement.src && activePlayerType === 'local') {
+            if(!audioElement.src) {
                 loadTrack(0);
             }
 
-            const song = playlist[currentIndex];
-            if (song.type === 'local') {
-                if(audioElement.paused) {
-                    audioElement.play().then(() => {
-                        isPlaying = true;
-                        updatePlayUI(true);
-                    }).catch(() => showToast("Gagal", "Format audio tidak didukung."));
-                } else {
-                    audioElement.pause();
-                    isPlaying = false;
-                    updatePlayUI(false);
-                }
-            } else if (song.type === 'youtube') {
-                if (ytPlayer) {
-                    const state = ytPlayer.getPlayerState();
-                    if (state === YT.PlayerState.PLAYING) {
-                        ytPlayer.pauseVideo();
-                        isPlaying = false;
-                        updatePlayUI(false);
-                    } else {
-                        ytPlayer.playVideo();
-                        isPlaying = true;
-                        updatePlayUI(true);
-                    }
-                }
+            if(audioElement.paused) {
+                audioElement.play().then(() => {
+                    isPlaying = true;
+                    updatePlayUI(true);
+                }).catch(() => showToast("Gagal", "Format audio tidak didukung."));
+            } else {
+                audioElement.pause();
+                isPlaying = false;
+                updatePlayUI(false);
             }
         }
 
@@ -691,15 +572,7 @@
                 togglePlay();
             } else {
                 loadTrack(index);
-                setTimeout(() => {
-                    if (playlist[currentIndex].type === 'local') {
-                        audioElement.play().then(() => { isPlaying = true; updatePlayUI(true); });
-                    } else if (playlist[currentIndex].type === 'youtube' && ytPlayer) {
-                        ytPlayer.playVideo();
-                        isPlaying = true;
-                        updatePlayUI(true);
-                    }
-                }, 500);
+                audioElement.play().then(() => { isPlaying = true; updatePlayUI(true); });
             }
         }
 
@@ -714,57 +587,34 @@
             if(playlist.length === 0) return;
             currentIndex = isShuffle ? Math.floor(Math.random() * playlist.length) : (currentIndex + 1) % playlist.length;
             loadTrack(currentIndex);
-            setTimeout(() => {
-                if (playlist[currentIndex].type === 'local') audioElement.play();
-                else if (ytPlayer) ytPlayer.playVideo();
-                isPlaying = true;
-                updatePlayUI(true);
-            }, 500);
+            audioElement.play();
+            isPlaying = true;
+            updatePlayUI(true);
         }
 
         function prevTrack() {
             if(playlist.length === 0) return;
             currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
             loadTrack(currentIndex);
-            setTimeout(() => {
-                if (playlist[currentIndex].type === 'local') audioElement.play();
-                else if (ytPlayer) ytPlayer.playVideo();
-                isPlaying = true;
-                updatePlayUI(true);
-            }, 500);
+            audioElement.play();
+            isPlaying = true;
+            updatePlayUI(true);
         }
 
         function updateProgress() {
-            const song = playlist[currentIndex];
-            if (!song) return;
-
-            if (song.type === 'local' && !isNaN(audioElement.duration)) {
+            if (!isNaN(audioElement.duration)) {
                 const percent = (audioElement.currentTime / audioElement.duration) * 100;
                 document.getElementById('progressBar').style.width = `${percent}%`;
                 document.getElementById('currentTime').innerText = formatTime(audioElement.currentTime);
                 document.getElementById('durationTime').innerText = formatTime(audioElement.duration);
-            } else if (song.type === 'youtube' && ytPlayer && typeof ytPlayer.getDuration === 'function') {
-                const current = ytPlayer.getCurrentTime() || 0;
-                const duration = ytPlayer.getDuration() || 1;
-                const percent = (current / duration) * 100;
-                document.getElementById('progressBar').style.width = `${percent}%`;
-                document.getElementById('currentTime').innerText = formatTime(current);
-                document.getElementById('durationTime').innerText = formatTime(duration);
             }
         }
 
         function seekAudio(event) {
             const width = event.currentTarget.clientWidth;
             const clickX = event.offsetX;
-            const song = playlist[currentIndex];
-            if (!song) return;
-
-            if (song.type === 'local' && !isNaN(audioElement.duration)) {
+            if (!isNaN(audioElement.duration)) {
                 audioElement.currentTime = (clickX / width) * audioElement.duration;
-            } else if (song.type === 'youtube' && ytPlayer && typeof ytPlayer.seekTo === 'function') {
-                const duration = ytPlayer.getDuration() || 0;
-                const seekToTime = (clickX / width) * duration;
-                ytPlayer.seekTo(seekToTime, true);
             }
         }
 
@@ -776,8 +626,8 @@
 
         function handleSongEnd() {
             if(isLoop) {
-                if (playlist[currentIndex].type === 'local') { audioElement.currentTime = 0; audioElement.play(); }
-                else if (ytPlayer) { ytPlayer.seekTo(0); ytPlayer.playVideo(); }
+                audioElement.currentTime = 0;
+                audioElement.play();
             } else {
                 nextTrack();
             }
@@ -822,7 +672,7 @@
         }
 
         function pasteClipboard() {
-            navigator.clipboard.readText().then(text => {
+            navigator.clipboard.readText().text => {
                 document.getElementById('ytUrlInput').value = text;
                 showToast("Berhasil", "Link ditempel.");
             }).catch(() => showToast("Gagal", "Tempel manual."));
@@ -855,90 +705,14 @@
                     url: url
                 };
 
-                showToast("Berhasil", "Video ditemukan: " + currentFetchedVideo.title);
-            } catch (err) {
-                currentFetchedVideo = {
-                    videoId: videoId,
-                    title: "Audio YouTube Asli",
-                    author: "YouTube Downloader",
-                    thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-                    url: url
-                };
-                showToast("Berhasil", "Link siap dimasukkan.");
-            }
-        }
-
-                        async function startDownloadProcess() {
-            const url = document.getElementById('ytUrlInput').value.trim();
-            if(!url) { showToast("Peringatan", "Masukkan link YouTube terlebih dahulu!"); return; }
-
-            if (!currentFetchedVideo) {
-                await checkVideo();
-            }
-
-            const progressBox = document.getElementById('progressBox');
-            const progressFill = document.getElementById('progressFill');
-            const statusText = document.getElementById('progressStatusText');
-            const percentText = document.getElementById('progressPercentText');
-            const resultCard = document.getElementById('videoResultCard');
-
-            progressBox.classList.remove('hidden');
-            resultCard.classList.add('hidden');
-            
-            statusText.innerText = "Mengunduh file ke memori HP...";
-            progressFill.style.width = "40%";
-            percentText.innerText = "Membaca...";
-
-            try {
-                // Link backend Vercel yang sudah dihubungkan
-                const backendUrl = 'https://nf-music-cloud.vercel.app/api/convert'; 
-
-                const response = await fetch(backendUrl, { 
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ url: url })
-                });
-
-                if (!response.ok) throw new Error("Gagal mengunduh dari server backend");
-
-                progressFill.style.width = "75%";
-                percentText.innerText = "Menyimpan...";
-
-                // 1. Mengubah respon server menjadi gumpalan file fisik (Blob)
-                const blob = await response.blob();
-                
-                // 2. Membuat link lokal (sementara) di dalam HP untuk file tersebut
-                const downloadUrl = window.URL.createObjectURL(blob);
-                
-                // 3. Membuat tombol klik tersembunyi agar HP otomatis menyimpan file
-                const a = document.createElement('a');
-                a.href = downloadUrl;
-                a.download = currentFetchedVideo ? `${currentFetchedVideo.title}.mp3` : "NF_Music_Audio.mp3";
-                document.body.appendChild(a);
-                a.click(); // Memunculkan pop-up unduhan HP
-                a.remove(); 
-                
-                // 4. Bersihkan memori RAM HP
-                window.URL.revokeObjectURL(downloadUrl);
-
-                progressFill.style.width = "100%";
-                percentText.innerText = "100%";
-                
-                // Menampilkan hasil video setelah berhasil diunduh
                 document.getElementById('resTitle').innerText = currentFetchedVideo.title;
+                document.getElementById('resChannel').innerText = currentFetchedVideo.author;
                 document.getElementById('resThumbnail').src = currentFetchedVideo.thumbnail;
-                resultCard.classList.remove('hidden');
-                
-                setTimeout(() => {
-                    progressBox.classList.add('hidden');
-                    document.getElementById('ytUrlInput').value = '';
-                    showToast("Berhasil!", "Audio telah tersimpan di Galeri/Folder Download HP-mu.");
-                }, 1500);
+                document.getElementById('videoResultCard').classList.remove('hidden');
 
-            } catch (error) {
-                progressBox.classList.add('hidden');
-                showToast("Error", "Gagal mengunduh. Pastikan server backend berjalan.");
-                console.error(error);
+                showToast("Berhasil", "Metadata video berhasil dimuat!");
+            } catch (err) {
+                showToast("Gagal", "Tidak dapat mengambil data video.");
             }
         }
 
@@ -946,7 +720,7 @@
             const toast = document.getElementById('toast');
             document.getElementById('toastTitle').innerText = title;
             document.getElementById('toastDesc').innerText = desc;
-            toast.classList.add('show');
+            toast.classList.1add('show');
             setTimeout(() => toast.classList.remove('show'), 2500);
         }
     </script>
