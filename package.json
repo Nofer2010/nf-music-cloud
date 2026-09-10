@@ -1,0 +1,7 @@
+{
+  "name": "nf-music-cloud",
+  "version": "1.0.0",
+  "dependencies": {
+    "ytdl-core": "latest"
+  }
+}

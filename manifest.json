@@ -1,0 +1,20 @@
+{
+    "name": "NF Music®",
+    "short_name": "NF Music",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#120f1d",
+    "theme_color": "#120f1d",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
